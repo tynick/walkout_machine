@@ -15,8 +15,8 @@ GPIO.setup(23, GPIO.IN) # Change song
 GPIO.setup(24, GPIO.IN) # Play song
 GPIO.setup(25, GPIO.IN) # Won the game
 
-# Lists of songs to pick from randomly at program start
-# This wont be random each time 
+# The following players requested multiple walkout songs
+# Built arrays for each user
 tysons_songs = ['Awwsome.mp3', 'RainingBlood.mp3', 'SameCrew.mp3', 'WeDemBoyz.mp3']
 dans_songs = ['BumpAndGrind.mp3', 'IgnitionRemix.mp3', 'Bugatti.mp3']
 seans_songs = ['Champion.mp3', 'RealAmerican.mp3', 'Renegade.mp3', 'AllTheWayTurntUp.mp3', 'HowToBeTheMan.mp3']
@@ -39,10 +39,13 @@ if len(song_names) != len(batter_names):
 lcd.clear()
 lcd.message(battername + "\n" + songname[:-4])
 
+# Plays a greeting to let you know the system is booted and ready.
+# This is helpful because you are probably running this without a monitor
+# or a network connection.
 os.system('sudo mpg321 Walkout.mp3')
 
 # Wait for input, then repeat
-# Need to make functions but im bad at the scope of variables
+# These could definitely be placed in functions but I was in a hurry
 while True:
     if (lcd.is_pressed(LCD.SELECT)):
         # Check to make sure we arent at the end of list, start at beginning if we are.
